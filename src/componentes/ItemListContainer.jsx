@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { getProducts } from '../firebase/repository';
 import { useCart } from './Carrito/CarritoContext'; 
+import './ItemListContainer.css';
 
 export default function ItemListContainer({ selectedBrand }) {
     const { addToCart } = useCart(); 
@@ -24,7 +25,12 @@ export default function ItemListContainer({ selectedBrand }) {
     }, [selectedBrand, myProds]);
 
     return (
-        <div className="container mt-4">
+        <div 
+            className="container mt-4" 
+            style={{
+                paddingTop: selectedBrand ? "500px" : "1100px"  
+            }}
+        >
             <div className="row">
                 {filteredProds.map(prod => (
                     <div key={prod.id} className="col-md-4 mb-4">
